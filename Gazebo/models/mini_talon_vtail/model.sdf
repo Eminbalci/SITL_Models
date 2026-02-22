@@ -312,6 +312,11 @@
       </visual> -->
 
       <!-- Sensors. -->
+    <sensor name="camera" type="camera">
+      <pose>0.2 0 0.1 0 0 0</pose> <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>camera_image</topic> </sensor>
       <sensor name="imu_sensor" type="imu">
         <pose degrees="true">0 0 0 180 0 0</pose>
         <always_on>1</always_on>
@@ -322,7 +327,6 @@
         <update_rate>1</update_rate>
       </sensor>
     </link>
-
     <link name="main_wheel_link">
       <pose degrees="true">0.302018 0 -0.097974 90 0 0</pose>
       <inertial>
@@ -1020,7 +1024,10 @@
       </control>
 
     </plugin>
-
+    <plugin filename="gz-sim-sensors-system"
+           name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
   </model>
 </sdf>
 
@@ -1082,4 +1089,3 @@
   gz topic -t /left_ruddervator_joint/cmd_pos -m gz.msgs.Double -p 'data: 1'
 
   -->
-
